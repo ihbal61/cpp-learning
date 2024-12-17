@@ -6,7 +6,7 @@
  // Online C++ compiler to run C++ program online
 #include "TreeNode.h"
 
-using namespace tree_algo;
+namespace tree_algo{
 
 std::vector<int> TreeNodeHelper::preorder(TreeNode* root, bool method) {
     if (method) {
@@ -127,3 +127,5 @@ void TreeNodeHelper::_postorder_non_recursive(TreeNode* _root) {
         }
     }
 }
+
+};// namespace tree_algo
