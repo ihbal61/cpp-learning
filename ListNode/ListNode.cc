@@ -19,6 +19,10 @@ ListNode* ListNodeHelper::merge_sorted_list_node(ListNode* head1,
     return _merge_sorted_list_node_helper(head1, head2);
 }
 
+/*
+ * Algorithm complexity: O(n)
+ * Space complexity: O(1)
+ */
 ListNode* ListNodeHelper::_reverse_list_node_helper(ListNode* _head) {
     if (_head || _head -> next) {
         return _head;
@@ -33,6 +37,10 @@ ListNode* ListNodeHelper::_reverse_list_node_helper(ListNode* _head) {
     return _prev;
 }
 
+/*
+ * Algorithm complexity: O(m+n)
+ * Space complexity: O(1)
+ */
 ListNode* ListNodeHelper::_merge_sorted_list_node_helper(ListNode* _head1,
                 ListNode* _head2) {
     ListNode* _head = new ListNode();

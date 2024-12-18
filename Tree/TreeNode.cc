@@ -85,6 +85,10 @@ void TreeNodeHelper::_preorder_non_recursive(TreeNode* _root) {
     }
 }
 
+/*
+ * Algorithm complexity: O(n)
+ * Space complexity: O(n)
+ */
 void TreeNodeHelper::_inorder_recursive(TreeNode* _root) {
     /*递归中序遍历*/
     if (!_root) {
@@ -95,6 +99,10 @@ void TreeNodeHelper::_inorder_recursive(TreeNode* _root) {
     _inorder_recursive(_root -> right);
 }
 
+/*
+ * Algorithm complexity: O(n)
+ * Space complexity: O(n)
+ */
 void TreeNodeHelper::_inorder_non_recursive(TreeNode* _root) {
     /*非递归中序遍历*/
     if (!_root) {
@@ -114,6 +122,10 @@ void TreeNodeHelper::_inorder_non_recursive(TreeNode* _root) {
     }
 }
 
+/*
+ * Algorithm complexity: O(n)
+ * Space complexity: O(n)
+ */
 void TreeNodeHelper::_postorder_recursive(TreeNode* _root) {
     /*递归后序遍历*/
     if (!_root) {
@@ -124,6 +136,10 @@ void TreeNodeHelper::_postorder_recursive(TreeNode* _root) {
     _order_vec.push_back(_root -> val);
 }
 
+/*
+ * Algorithm complexity: O(n)
+ * Space complexity: O(n)
+ */
 void TreeNodeHelper::_postorder_non_recursive(TreeNode* _root) {
     /*非递归后序遍历*/
     if (!_root) {
@@ -149,6 +165,10 @@ void TreeNodeHelper::_postorder_non_recursive(TreeNode* _root) {
     }
 }
 
+/*
+ * Algorithm complexity: O(n)
+ * Space complexity: O(n)
+ */
 int TreeNodeHelper::_levelorder(TreeNode* _root) {
     if (!_root) {
         return 0;
@@ -174,6 +194,10 @@ int TreeNodeHelper::_levelorder(TreeNode* _root) {
     return _max_depth;
 }
 
+/*
+ * Algorithm complexity: O(n)
+ * Space complexity: O(n)
+ */
 int TreeNodeHelper::_max_depth_recursive(TreeNode* _root) {
     if (!_root) {
         return _max_depth;
@@ -182,6 +206,10 @@ int TreeNodeHelper::_max_depth_recursive(TreeNode* _root) {
                 _max_depth_recursive(_root -> right)) + 1;
 }
 
+/*
+ * Algorithm complexity: O(n)
+ * Space complexity: O(n)
+ */
 bool TreeNodeHelper::_is_complete_binary_tree(TreeNode* _root) {
     if (!_root) {
         return true;
