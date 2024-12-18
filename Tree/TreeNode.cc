@@ -12,76 +12,76 @@ namespace tree_algo{
 
 std::vector<int> TreeNodeHelper::preorder(TreeNode* root, bool method) {
     if (method) {
-        _preorder_recursive(root);
+        preorder_recursive(root);
     } else {
-        _preorder_non_recursive(root);
+        preorder_non_recursive(root);
     }
-    return _order_vec;
+    return order_vec_;
 }
 
 std::vector<int> TreeNodeHelper::inorder(TreeNode* root, bool method) {
     if (method) {
-        _inorder_recursive(root);
+        inorder_recursive(root);
     } else {
-        _inorder_non_recursive(root);
+        inorder_non_recursive(root);
     }
-    return _order_vec;
+    return order_vec_;
 }
 
 std::vector<int> TreeNodeHelper::postorder(TreeNode* root, bool method) {
     if (method) {
-        _postorder_recursive(root);
+        postorder_recursive(root);
     } else {
-        _postorder_non_recursive(root);
+        postorder_non_recursive(root);
     }
     
-    return _order_vec;
+    return order_vec_;
 }
 
 std::vector<int> TreeNodeHelper::levelorder(TreeNode* root) {
-    _levelorder(root);
-    return _order_vec;
+    levelorder_helper(root);
+    return order_vec_;
 }
 
 int TreeNodeHelper::max_depth(TreeNode* root, bool method) {
     if (method) {
-        return _max_depth_recursive(root);
+        return max_depth_recursive(root);
     } else {
-        return _levelorder(root);
+        return levelorder_helper(root);
     }
 }
 
 bool TreeNodeHelper::is_complete_binary_tree(TreeNode* root) {
-    bool flag = true;
-    flag = _is_complete_binary_tree(root);
-    return flag;
+    bool flag_ = true;
+    flag_ = is_complete_binary_tree(root);
+    return flag_;
 }
 
-void TreeNodeHelper::_preorder_recursive(TreeNode* _root) {
+void TreeNodeHelper::preorder_recursive(TreeNode* root_) {
     /*递归前序遍历*/
-    if (!_root) {
+    if (!root_) {
         return;
     }
-    _order_vec.push_back(_root -> val);
-    _preorder_recursive(_root -> left);
-    _preorder_recursive(_root -> right);
+    order_vec_.push_back(root_ -> val);
+    preorder_recursive(root_ -> left);
+    preorder_recursive(root_ -> right);
 }
 
-void TreeNodeHelper::_preorder_non_recursive(TreeNode* _root) {
+void TreeNodeHelper::preorder_non_recursive(TreeNode* root_) {
     /*非递归前序遍历*/
-    if (!_root) {
+    if (!root_) {
         return;
     }
-    while (!_stk.empty() || _root) {
-        while (_root) {
-            _order_vec.push_back(_root -> val);
-            _stk.push(_root);
-            _root = _root -> left;
+    while (!stk_.empty() || root_) {
+        while (root_) {
+            order_vec_.push_back(root_ -> val);
+            stk_.push(root_);
+            root_ = root_ -> left;
         }
 
-        _root = _stk.top();
-        _stk.pop();
-        _root = _root -> right;
+        root_ = stk_.top();
+        stk_.pop();
+        root_ = root_ -> right;
     }
 }
 
@@ -89,36 +89,36 @@ void TreeNodeHelper::_preorder_non_recursive(TreeNode* _root) {
  * Algorithm complexity: O(n)
  * Space complexity: O(n)
  */
-void TreeNodeHelper::_inorder_recursive(TreeNode* _root) {
+void TreeNodeHelper::inorder_recursive(TreeNode* root_) {
     /*递归中序遍历*/
-    if (!_root) {
+    if (!root_) {
         return;
     }
-    _inorder_recursive(_root -> left);
-    _order_vec.push_back(_root -> val);
-    _inorder_recursive(_root -> right);
+    inorder_recursive(root_ -> left);
+    order_vec_.push_back(root_ -> val);
+    inorder_recursive(root_ -> right);
 }
 
 /*
  * Algorithm complexity: O(n)
  * Space complexity: O(n)
  */
-void TreeNodeHelper::_inorder_non_recursive(TreeNode* _root) {
+void TreeNodeHelper::inorder_non_recursive(TreeNode* root_) {
     /*非递归中序遍历*/
-    if (!_root) {
+    if (!root_) {
         return;
     }
-    while (!_stk.empty() || _root) {
-        while (_root) {
-            _stk.push(_root);
-            _root = _root -> left;
+    while (!stk_.empty() || root_) {
+        while (root_) {
+            stk_.push(root_);
+            root_ = root_ -> left;
         }
 
-        _root = _stk.top();
-        _stk.pop();
+        root_ = stk_.top();
+        stk_.pop();
 
-        _order_vec.push_back(_root -> val);
-        _root = _root -> right;
+        order_vec_.push_back(root_ -> val);
+        root_ = root_ -> right;
     }
 }
 
@@ -126,41 +126,41 @@ void TreeNodeHelper::_inorder_non_recursive(TreeNode* _root) {
  * Algorithm complexity: O(n)
  * Space complexity: O(n)
  */
-void TreeNodeHelper::_postorder_recursive(TreeNode* _root) {
+void TreeNodeHelper::postorder_recursive(TreeNode* root_) {
     /*递归后序遍历*/
-    if (!_root) {
+    if (!root_) {
         return;
     }
-    _postorder_recursive(_root -> left);
-    _postorder_recursive(_root -> right);
-    _order_vec.push_back(_root -> val);
+    postorder_recursive(root_ -> left);
+    postorder_recursive(root_ -> right);
+    order_vec_.push_back(root_ -> val);
 }
 
 /*
  * Algorithm complexity: O(n)
  * Space complexity: O(n)
  */
-void TreeNodeHelper::_postorder_non_recursive(TreeNode* _root) {
+void TreeNodeHelper::postorder_non_recursive(TreeNode* root_) {
     /*非递归后序遍历*/
-    if (!_root) {
+    if (!root_) {
         return;
     }
-    while (!_stk.empty() || _root) {
-        while (_root) {
-            _stk.push(_root);
-            _root = _root -> left;
+    while (!stk_.empty() || root_) {
+        while (root_) {
+            stk_.push(root_);
+            root_ = root_ -> left;
         }
 
-        _root = _stk.top();
-        _stk.pop();
+        root_ = stk_.top();
+        stk_.pop();
 
-        if (!_root -> right || _root -> right == _prev) {
-            _order_vec.push_back(_root -> val);
-            _prev = _root;
-            _root = nullptr;
+        if (!root_ -> right || root_ -> right == prev_) {
+            order_vec_.push_back(root_ -> val);
+            prev_ = root_;
+            root_ = nullptr;
         } else {
-            _stk.push(_root);
-            _root = _root -> right;
+            stk_.push(root_);
+            root_ = root_ -> right;
         }
     }
 }
@@ -169,67 +169,67 @@ void TreeNodeHelper::_postorder_non_recursive(TreeNode* _root) {
  * Algorithm complexity: O(n)
  * Space complexity: O(n)
  */
-int TreeNodeHelper::_levelorder(TreeNode* _root) {
-    if (!_root) {
+int TreeNodeHelper::levelorder_helper(TreeNode* root_) {
+    if (!root_) {
         return 0;
     }
-    _que.push(_root);
-    while (!_que.empty()) {
+    que_.push(root_);
+    while (!que_.empty()) {
 
-        int n = _que.size();
+        int n = que_.size();
         for (int i = 0; i < n; i++) {
-            _node = _que.front();
-            _que.pop();
-            _order_vec.push_back(_node -> val);
+            node_ = que_.front();
+            que_.pop();
+            order_vec_.push_back(node_ -> val);
 
-            if (_node -> left) {
-                _que.push(_node -> left);
+            if (node_ -> left) {
+                que_.push(node_ -> left);
             }
-            if (_node -> right) {
-                _que.push(_node -> right);
+            if (node_ -> right) {
+                que_.push(node_ -> right);
             }
         }
-        _max_depth++;
+        max_depth_++;
     }
-    return _max_depth;
+    return max_depth_;
 }
 
 /*
  * Algorithm complexity: O(n)
  * Space complexity: O(n)
  */
-int TreeNodeHelper::_max_depth_recursive(TreeNode* _root) {
-    if (!_root) {
-        return _max_depth;
+int TreeNodeHelper::max_depth_recursive(TreeNode* root_) {
+    if (!root_) {
+        return max_depth_;
     }
-    return std::max(_max_depth_recursive(_root -> left),
-                _max_depth_recursive(_root -> right)) + 1;
+    return std::max(max_depth_recursive(root_ -> left),
+                max_depth_recursive(root_ -> right)) + 1;
 }
 
 /*
  * Algorithm complexity: O(n)
  * Space complexity: O(n)
  */
-bool TreeNodeHelper::_is_complete_binary_tree(TreeNode* _root) {
-    if (!_root) {
+bool TreeNodeHelper::is_complete_binary_tree(TreeNode* root_) {
+    if (!root_) {
         return true;
     }
-    _que.push(_root);
-    while (!_que.empty()) {
-        _node = _que.front();
-        _que.pop();
-        if (!_node) {
-            _flag = true;
+    que_.push(root_);
+    while (!que_.empty()) {
+        node_ = que_.front();
+        que_.pop();
+        if (!node_) {
+            flag_ = true;
         } else {
-            if (_flag) {
+            if (flag_) {
                 return false;
             }
-            _que.push(_node -> left);
-            _que.push(_node -> right);
+            que_.push(node_ -> left);
+            que_.push(node_ -> right);
         }
 
     }
-    return _flag;
+    return flag_;
 }
 
 };// namespace tree_algo

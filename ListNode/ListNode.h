@@ -30,16 +30,16 @@ class ListNodeHelper {
     ListNode* sort_list_node(ListNode* head);
 
     private:
-    ListNode* _reverse_list_node_helper(ListNode* _head);
-    ListNode* _merge_sorted_list_node_helper(ListNode* _head1, ListNode* _head2);
-    ListNode* _sort_list_node_merge(ListNode* _head);
-    ListNode* _split_list_node(ListNode* _head);
+    ListNode* reverse_list_node_helper(ListNode* head_);
+    ListNode* merge_sorted_list_node_helper(ListNode* head_1, ListNode* head_2);
+    ListNode* sort_list_node_merge(ListNode* head_);
+    ListNode* split_list_node(ListNode* head_);
     
     private:
-    ListNode* _prev = nullptr;
-    ListNode* _curr = nullptr;
-    ListNode* _temp = nullptr;
-    ListNode* _new_head = nullptr;
+    ListNode* prev_ = nullptr;
+    ListNode* curr_ = nullptr;
+    ListNode* temp_ = nullptr;
+    ListNode* new_head_ = nullptr;
 };
 
 }; // namespace list_node_algo

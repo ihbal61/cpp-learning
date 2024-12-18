@@ -34,29 +34,29 @@ class TreeNodeHelper {
         
     private:
         /*前序*/
-        void _preorder_recursive(TreeNode* _root);
-        void _preorder_non_recursive(TreeNode* _root);
+        void preorder_recursive(TreeNode* root_);
+        void preorder_non_recursive(TreeNode* root_);
         /*中序*/
-        void _inorder_recursive(TreeNode* _root);
-        void _inorder_non_recursive(TreeNode* _root);
+        void inorder_recursive(TreeNode* root_);
+        void inorder_non_recursive(TreeNode* root_);
         /*后序*/
-        void _postorder_recursive(TreeNode* _root);
-        void _postorder_non_recursive(TreeNode* _root);
+        void postorder_recursive(TreeNode* root_);
+        void postorder_non_recursive(TreeNode* root_);
         /*层序*/
-        int _levelorder(TreeNode* _root);
-        int _max_depth_recursive(TreeNode* _root);
+        int levelorder_helper(TreeNode* root_);
+        int max_depth_recursive(TreeNode* root_);
         /*判断是否为完全二叉树*/
-        bool _is_complete_binary_tree(TreeNode* _root);
+        bool is_complete_binary_tree(TreeNode* root_);
     
         
     private:
-        std::vector<int> _order_vec;
-        std::stack<TreeNode*> _stk;
-        TreeNode* _node = nullptr;
-        TreeNode* _prev = nullptr;
-        std::queue<TreeNode*> _que;
-        int _max_depth = 0;
-        bool _flag = false;
+        std::vector<int> order_vec_;
+        std::stack<TreeNode*> stk_;
+        TreeNode* node_ = nullptr;
+        TreeNode* prev_ = nullptr;
+        std::queue<TreeNode*> que_;
+        int max_depth_ = 0;
+        bool flag_ = false;
 };
 
 }; // namespace tree_algo

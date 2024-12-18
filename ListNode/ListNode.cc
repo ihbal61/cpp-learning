@@ -10,17 +10,17 @@
 namespace list_node_algo {
 
 ListNode* ListNodeHelper::reverse_list_node(ListNode* head) {
-    head = _reverse_list_node_helper(head);
+    head = reverse_list_node_helper(head);
     return head;
 }
 
 ListNode* ListNodeHelper::merge_sorted_list_node(ListNode* head1,
             ListNode* head2) {
-    return _merge_sorted_list_node_helper(head1, head2);
+    return merge_sorted_list_node_helper(head1, head2);
 }
 
 ListNode* ListNodeHelper::sort_list_node(ListNode* head) {
-    head = _sort_list_node_merge(head);
+    head = sort_list_node_merge(head);
     return head;
 }
 
@@ -28,76 +28,76 @@ ListNode* ListNodeHelper::sort_list_node(ListNode* head) {
  * Algorithm complexity: O(n)
  * Space complexity: O(1)
  */
-ListNode* ListNodeHelper::_reverse_list_node_helper(ListNode* _head) {
-    if (_head || _head -> next) {
-        return _head;
+ListNode* ListNodeHelper::reverse_list_node_helper(ListNode* head_) {
+    if (head_ || head_ -> next) {
+        return head_;
     }
-    _curr = _head;
-    while (_curr) {
-        _temp = _curr -> next;
-        _curr -> next = _prev;
-        _prev = _curr;
-        _curr = _temp;
+    curr_ = head_;
+    while (curr_) {
+        temp_ = curr_ -> next;
+        curr_ -> next = prev_;
+        prev_ = curr_;
+        curr_ = temp_;
     }
-    return _prev;
+    return prev_;
 }
 
 /*
  * Algorithm complexity: O(m+n)
  * Space complexity: O(1)
  */
-ListNode* ListNodeHelper::_merge_sorted_list_node_helper(ListNode* _head1,
-                ListNode* _head2) {
-    ListNode* _head = new ListNode();
-    _curr = _head;
-    while (_head1 && _head2) {
-        if (_head1 -> val < _head2 -> val) {
-            _curr -> next = _head1;
-            _head1 = _head1 -> next;
+ListNode* ListNodeHelper::merge_sorted_list_node_helper(ListNode* head_1,
+                ListNode* head_2) {
+    ListNode* head_ = new ListNode();
+    curr_ = head_;
+    while (head_1 && head_2) {
+        if (head_1 -> val < head_2 -> val) {
+            curr_ -> next = head_1;
+            head_1 = head_1 -> next;
         } else {
-            _curr -> next = _head2;
-            _head2 = _head2 -> next;
+            curr_ -> next = head_2;
+            head_2 = head_2 -> next;
         }
-        _curr = _curr -> next;
+        curr_ = curr_ -> next;
     }
-    if (!_head1) {
-        _curr -> next = _head2;
+    if (!head_1) {
+        curr_ -> next = head_2;
     }
-    if (!_head2) {
-        _curr -> next = _head1;
+    if (!head_2) {
+        curr_ -> next = head_1;
     }
-    return _head -> next;
+    return head_ -> next;
 }
 
 /*
  * Algorithm complexity: O(nlogn)
  * Space complexity: O(1)
  */
-ListNode* ListNodeHelper::_sort_list_node_merge(ListNode* _head) {
-    if (!_head || !_head -> next) {
-        return _head;
+ListNode* ListNodeHelper::sort_list_node_merge(ListNode* head_) {
+    if (!head_ || !head_ -> next) {
+        return head_;
     }
-    ListNode* _second = _split_list_node(_head);
-    _head = _sort_list_node_merge(_head);
-    _second = _sort_list_node_merge(_second);
-    return _merge_sorted_list_node_helper(_head, _second);
+    ListNode* _second = split_list_node(head_);
+    head_ = sort_list_node_merge(head_);
+    _second = sort_list_node_merge(_second);
+    return merge_sorted_list_node_helper(head_, _second);
 }
 
 /*
  * Algorithm complexity: O(n)
  * Space complexity: O(1)
  */
-ListNode* ListNodeHelper::_split_list_node(ListNode* _head) {
-    ListNode* _fast = _head, *_slow = _head;
-    while (_fast && _fast -> next) {
-        _fast = _fast -> next -> next;
-        if (_fast) {
-            _slow = _slow -> next;
+ListNode* ListNodeHelper::split_list_node(ListNode* head_) {
+    ListNode* fast = head_, *slow = head_;
+    while (fast && fast -> next) {
+        fast = fast -> next -> next;
+        if (fast) {
+            slow = slow -> next;
         }
     }
-    _temp = _slow -> next;
-    _slow -> next = nullptr;
-    return _temp;
+    temp_ = slow -> next;
+    slow -> next = nullptr;
+    return temp_;
 }
 
 }; // namespace list_node_algo
