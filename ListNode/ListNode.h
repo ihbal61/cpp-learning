@@ -11,6 +11,7 @@
 #include <iostream>
 #include <stack>
 #include <vector>
+#include <algorithm>
 
 namespace list_node_algo {
 
@@ -32,9 +33,12 @@ class ListNodeHelper {
     private:
     ListNode* reverse_list_node_helper(ListNode* head_);
     ListNode* merge_sorted_list_node_helper(ListNode* head_1, ListNode* head_2);
-    ListNode* sort_list_node_merge(ListNode* head_);
+    ListNode* merge_sort(ListNode* head_);
     ListNode* split_list_node(ListNode* head_);
-    
+    ListNode* quick_sort(ListNode* head);
+    void quick_sort_helper(ListNode* head_, ListNode* tail_);
+    ListNode* partition(ListNode* head_, ListNode* tail_);
+    ListNode* get_tail(ListNode* head_);
     private:
     ListNode* prev_ = nullptr;
     ListNode* curr_ = nullptr;
