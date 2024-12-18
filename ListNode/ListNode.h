@@ -27,15 +27,19 @@ class ListNodeHelper {
     // api for main.cc
     ListNode* reverse_list_node(ListNode* head);
     ListNode* merge_sorted_list_node(ListNode* head1, ListNode* head2);
+    ListNode* sort_list_node(ListNode* head);
 
     private:
     ListNode* _reverse_list_node_helper(ListNode* _head);
-    ListNode* _merge_sorted_list_node_helper(ListNode* head1, ListNode* head2);
+    ListNode* _merge_sorted_list_node_helper(ListNode* _head1, ListNode* _head2);
+    ListNode* _sort_list_node_merge(ListNode* _head);
+    ListNode* _split_list_node(ListNode* _head);
     
     private:
     ListNode* _prev = nullptr;
     ListNode* _curr = nullptr;
     ListNode* _temp = nullptr;
-}
+    ListNode* _new_head = nullptr;
+};
 
 }; // namespace list_node_algo
