@@ -1,9 +1,11 @@
 /*
- * Date: 2024-12-18 01:07
- * Author: yikebaer·aizezi
- * Content: TreeNode related algorithm
+ * Copyright (c) 2024 yikebaer·aizezi
+ * @date: 2024-12-19 11:07
+ * @author: yikebaer·aizezi
+ * @file: TreeNode.cc
+ * @brief: TreeNode related algorithm
 */
- // Online C++ compiler to run C++ program online
+
 #include "TreeNode.h"
 
 namespace tree_algo{
