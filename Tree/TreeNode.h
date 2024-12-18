@@ -52,7 +52,7 @@ class TreeNodeHelper {
         TreeNode* _prev = nullptr;
         std::queue<TreeNode*> _que;
         int _max_depth = 0;
-        bool _node_flag = false;
+        bool _flag = false;
 };
 
 }; // namespace tree_algo
