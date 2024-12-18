@@ -1,3 +1,7 @@
+.vscode
 .vscode/*
 Tree/*.o
 Tree/*.a
+.git
+ListNode/*.o
+ListNode/*.a

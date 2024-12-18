@@ -7,6 +7,7 @@
 #include <iostream>
 #include <vector>
 #include <stack>
+#include <queue>
 
 namespace tree_algo {
 
@@ -22,7 +23,9 @@ class TreeNodeHelper {
         std::vector<int> preorder(TreeNode* root, bool method);
         std::vector<int> inorder(TreeNode* root, bool method);
         std::vector<int> postorder(TreeNode* root, bool method);
-        std::vector<int> levelorder(TreeNode* root, bool method);
+        std::vector<int> levelorder(TreeNode* root);
+        int max_depth(TreeNode* root, bool method);
+        bool is_complete_binary_tree(TreeNode* root);
 
         
     private:
@@ -35,7 +38,11 @@ class TreeNodeHelper {
         /*后序*/
         void _postorder_recursive(TreeNode* _root);
         void _postorder_non_recursive(TreeNode* _root);
-        
+        /*层序*/
+        int _levelorder(TreeNode* _root);
+        int _max_depth_recursive(TreeNode* _root);
+        /*判断是否为完全二叉树*/
+        bool _is_complete_binary_tree(TreeNode* _root);
     
         
     private:
@@ -43,6 +50,9 @@ class TreeNodeHelper {
         std::stack<TreeNode*> _stk;
         TreeNode* _node = nullptr;
         TreeNode* _prev = nullptr;
+        std::queue<TreeNode*> _que;
+        int _max_depth = 0;
+        bool _node_flag = false;
 };
 
 }; // namespace tree_algo

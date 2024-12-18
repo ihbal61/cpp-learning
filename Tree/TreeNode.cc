@@ -36,6 +36,25 @@ std::vector<int> TreeNodeHelper::postorder(TreeNode* root, bool method) {
     return _order_vec;
 }
 
+std::vector<int> TreeNodeHelper::levelorder(TreeNode* root) {
+    _levelorder(root);
+    return _order_vec;
+}
+
+int TreeNodeHelper::max_depth(TreeNode* root, bool method) {
+    if (method) {
+        return _max_depth_recursive(root);
+    } else {
+        return _levelorder(root);
+    }
+}
+
+bool TreeNodeHelper::is_complete_binary_tree(TreeNode* root) {
+    bool flag = true;
+    flag = _is_complete_binary_tree(root);
+    return flag;
+}
+
 void TreeNodeHelper::_preorder_recursive(TreeNode* _root) {
     /*递归前序遍历*/
     if (!_root) {
@@ -126,6 +145,61 @@ void TreeNodeHelper::_postorder_non_recursive(TreeNode* _root) {
             _root = _root -> right;
         }
     }
+}
+
+int TreeNodeHelper::_levelorder(TreeNode* _root) {
+    if (!_root) {
+        return 0;
+    }
+    _que.push(_root);
+    while (!_que.empty()) {
+
+        int n = _que.size();
+        for (int i = 0; i < n; i++) {
+            _node = _que.front();
+            _que.pop();
+            _order_vec.push_back(_node -> val);
+
+            if (_node -> left) {
+                _que.push(_node -> left);
+            }
+            if (_node -> right) {
+                _que.push(_node -> right);
+            }
+        }
+        _max_depth++;
+    }
+    return _max_depth;
+}
+
+int TreeNodeHelper::_max_depth_recursive(TreeNode* _root) {
+    if (!_root) {
+        return _max_depth;
+    }
+    return std::max(_max_depth_recursive(_root -> left),
+                _max_depth_recursive(_root -> right)) + 1;
+}
+
+bool TreeNodeHelper::_is_complete_binary_tree(TreeNode* _root) {
+    if (!_root) {
+        return true;
+    }
+    _que.push(_root);
+    while (!_que.empty()) {
+        _node = _que.front();
+        _que.pop();
+        if (!_node) {
+            _flag = true;
+        } else {
+            if (_flag) {
+                return false;
+            }
+            _que.push(_node -> left);
+            _que.push(_node -> right);
+        }
+
+    }
+    return _flag;
 }
 
 };// namespace tree_algo
