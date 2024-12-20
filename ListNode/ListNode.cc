@@ -28,6 +28,133 @@ ListNode* ListNodeHelper::sort_list_node(ListNode* head) {
  * Algorithm complexity: O(n)
  * Space complexity: O(1)
  */
+bool ListNodeHelper::has_cycle(ListNode* head) {
+    if (!head) {
+        return false;
+    }
+    ListNode* slow_ = head, *fast_ = head;
+    while (fast_ && fast_ -> next) {
+        slow_ = slow_ -> next;
+        fast_ = fast_ -> next -> next;
+        if (slow_ == fast_) {
+            return true;
+        }
+    }
+    return false;
+}
+
+/*
+ * Algorithm complexity: O(n)
+ * Space complexity: O(1)
+ */
+ListNode* ListNodeHelper::find_middle(ListNode* head) {
+    if (!head) {
+        return head;
+    }
+    ListNode* slow = head, *fast = head;
+    while (fast && fast -> next) {
+        slow = slow -> next;
+        fast = fast -> next -> next;
+    }
+    return slow;
+}
+
+/*
+ * Algorithm complexity: O(n)
+ * Space complexity: O(1)
+ */
+ListNode* ListNodeHelper::remove_nth_from_end(ListNode* head, int n) {
+    ListNode* dummy = new ListNode(0, head);
+    ListNode* slow = dummy, *fast = dummy;
+    for (int i = 0; i < n; i++) {
+        fast = fast -> next;
+    }
+    while (fast -> next) {
+        slow = slow -> next;
+        fast = fast -> next;
+    }
+    slow -> next = slow -> next -> next;
+    return dummy -> next;
+}
+
+/*
+ * Algorithm complexity: O(n)
+ * Space complexity: O(n)
+ */
+bool ListNodeHelper::is_palindrome_stack(ListNode* head) {
+    if (!head || !head -> next) {
+        return true;
+    }
+    ListNode* slow = head, *fast = head;
+    std::stack<int> stk;
+    while (fast && fast -> next) {
+        stk.push(slow -> val);
+        slow = slow -> next;
+        fast = fast -> next -> next;
+    }
+    if (fast) {
+        slow = slow -> next;
+    }
+    while (slow) {
+        int val = stk.top();
+        stk.pop();
+        if (val != slow -> val) {
+            return false;
+        }
+        slow = slow -> next;
+    }
+    return true;
+}
+
+/*
+ * Algorithm complexity: O(n)
+ * Space complexity: O(1)
+ */
+bool ListNodeHelper::is_palindrome(ListNode* head) {
+    if (!head || !head -> next) {
+        return true;
+    }
+    ListNode* middle = find_middle(head);
+    ListNode* second = reverse_list_node(middle -> next);
+    ListNode* first = head;
+    while (second) {
+        if (first -> val != second -> val) {
+            return false;
+        }
+        first = first -> next;
+        second = second -> next;
+    }
+    return true;
+}
+
+/*
+ * Algorithm complexity: O(m+n)
+ * Space complexity: O(1)
+ */
+ListNode* ListNodeHelper::get_intersection_node(ListNode* head1, ListNode* head2) {
+    if (!head1 || !head2) {
+        return nullptr;
+    }
+    ListNode* first = head1, *second = head2;
+    while (first != second) {
+        if (first) {
+            first = first -> next;
+        } else {
+            first = head2;
+        }
+        if (second) {
+            second = second -> next;
+        } else {
+            second = head1;
+        }
+    }
+    return first;
+}
+
+/*
+ * Algorithm complexity: O(n)
+ * Space complexity: O(1)
+ */
 ListNode* ListNodeHelper::reverse_list_node_helper(ListNode* head_) {
     if (head_ || head_ -> next) {
         return head_;
@@ -40,31 +167,32 @@ ListNode* ListNodeHelper::reverse_list_node_helper(ListNode* head_) {
         curr_ = temp_;
     }
     return prev_;
+    
 }
 
 /*
  * Algorithm complexity: O(m+n)
  * Space complexity: O(1)
  */
-ListNode* ListNodeHelper::merge_sorted_list_node_helper(ListNode* head_1,
-                ListNode* head_2) {
+ListNode* ListNodeHelper::merge_sorted_list_node_helper(ListNode* head1_,
+                ListNode* head2_) {
     ListNode* head_ = new ListNode();
     curr_ = head_;
-    while (head_1 && head_2) {
-        if (head_1 -> val < head_2 -> val) {
-            curr_ -> next = head_1;
-            head_1 = head_1 -> next;
+    while (head1_ && head2_) {
+        if (head1_ -> val < head2_ -> val) {
+            curr_ -> next = head1_;
+            head1_ = head1_ -> next;
         } else {
-            curr_ -> next = head_2;
-            head_2 = head_2 -> next;
+            curr_ -> next = head2_;
+            head2_ = head2_ -> next;
         }
         curr_ = curr_ -> next;
     }
-    if (!head_1) {
-        curr_ -> next = head_2;
+    if (!head1_) {
+        curr_ -> next = head2_;
     }
-    if (!head_2) {
-        curr_ -> next = head_1;
+    if (!head2_) {
+        curr_ -> next = head1_;
     }
     return head_ -> next;
 }
