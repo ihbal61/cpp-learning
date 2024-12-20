@@ -32,11 +32,11 @@ bool ListNodeHelper::has_cycle(ListNode* head) {
     if (!head) {
         return false;
     }
-    ListNode* slow_ = head, *fast_ = head;
-    while (fast_ && fast_ -> next) {
-        slow_ = slow_ -> next;
-        fast_ = fast_ -> next -> next;
-        if (slow_ == fast_) {
+    ListNode* slow = head, *fast = head;
+    while (fast && fast -> next) {
+        slow = slow -> next;
+        fast = fast -> next -> next;
+        if (slow == fast) {
             return true;
         }
     }
