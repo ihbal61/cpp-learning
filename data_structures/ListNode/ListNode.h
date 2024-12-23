@@ -50,7 +50,6 @@ class ListNodeHelper {
     ListNode* prev_ = nullptr;
     ListNode* curr_ = nullptr;
     ListNode* temp_ = nullptr;
-    ListNode* new_head_ = nullptr;
 };
 
 }; // namespace list_node_algo

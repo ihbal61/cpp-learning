@@ -163,7 +163,7 @@ ListNode* ListNodeHelper::get_intersection_node(ListNode* head1, ListNode* head2
  * Space complexity: O(1)
  */
 ListNode* ListNodeHelper::reverse_list_node_helper(ListNode* head_) {
-    if (head_ || head_ -> next) {
+    if (!head_ || !head_ -> next) {
         return head_;
     }
     curr_ = head_;
