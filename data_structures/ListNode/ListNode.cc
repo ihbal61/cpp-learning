@@ -25,6 +25,7 @@ ListNode* ListNodeHelper::sort_list_node(ListNode* head) {
 }
 
 /*
+ * Leetcode: 141
  * Algorithm complexity: O(n)
  * Space complexity: O(1)
  */
@@ -44,6 +45,7 @@ bool ListNodeHelper::has_cycle(ListNode* head) {
 }
 
 /*
+ * Leetcode: 876
  * Algorithm complexity: O(n)
  * Space complexity: O(1)
  */
@@ -60,6 +62,7 @@ ListNode* ListNodeHelper::find_middle(ListNode* head) {
 }
 
 /*
+ * Leetcode: 19
  * Algorithm complexity: O(n)
  * Space complexity: O(1)
  */
@@ -78,6 +81,7 @@ ListNode* ListNodeHelper::remove_nth_from_end(ListNode* head, int n) {
 }
 
 /*
+ * Leetcode: 234
  * Algorithm complexity: O(n)
  * Space complexity: O(n)
  */
@@ -107,6 +111,7 @@ bool ListNodeHelper::is_palindrome_stack(ListNode* head) {
 }
 
 /*
+ * Leetcode: 234
  * Algorithm complexity: O(n)
  * Space complexity: O(1)
  */
@@ -128,6 +133,7 @@ bool ListNodeHelper::is_palindrome(ListNode* head) {
 }
 
 /*
+ * Leetcode: 160
  * Algorithm complexity: O(m+n)
  * Space complexity: O(1)
  */
@@ -152,6 +158,7 @@ ListNode* ListNodeHelper::get_intersection_node(ListNode* head1, ListNode* head2
 }
 
 /*
+ * Leetcode: 206
  * Algorithm complexity: O(n)
  * Space complexity: O(1)
  */
@@ -171,6 +178,7 @@ ListNode* ListNodeHelper::reverse_list_node_helper(ListNode* head_) {
 }
 
 /*
+ * Leetcode: 21
  * Algorithm complexity: O(m+n)
  * Space complexity: O(1)
  */
@@ -198,6 +206,7 @@ ListNode* ListNodeHelper::merge_sorted_list_node_helper(ListNode* head1_,
 }
 
 /*
+ * Leetcode: 148
  * Algorithm complexity: O(nlogn)
  * Space complexity: O(1)
  */
@@ -229,6 +238,7 @@ ListNode* ListNodeHelper::split_list_node(ListNode* head_) {
 }
 
 /*
+ * Leetcode: 148
  * Algorithm complexity: O(nlogn ~ n^2)
  * Space complexity: O(logn)
  */
