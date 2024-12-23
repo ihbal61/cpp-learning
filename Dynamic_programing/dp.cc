@@ -158,4 +158,144 @@ namespace dp_algo {
         return sell2;
     }
 
+    /*
+    * Leetcode: 64
+    * Algorithm complexity: O(m*n)
+    * Space complexity: O(m*n)
+    */
+    int DpAlgo::min_path_sum(std::vector<std::vector<int>>& grid) {
+        int m = grid.size(), n = grid[0].size();
+        std::vector<std::vector<int>> dp(m, std::vector<int>(n, 0));
+        dp[0][0] = grid[0][0];
+        for (int i = 1; i < m; i++) {
+            dp[i][0] = dp[i - 1][0] + grid[i][0];
+        }
+        for (int j = 1; j < n; j++) {
+            dp[0][j] = dp[0][j - 1] + grid[0][j];
+        }
+        for (int i = 1; i < m; i++) {
+            for (int j = 1; j < n; j++) {
+                dp[i][j] = std::min(dp[i - 1][j], dp[i][j - 1]) + grid[i][j];
+            }
+        }
+        return dp[m - 1][n - 1];
+    }
+
+    /*
+    * Leetcode: 931
+    * Algorithm complexity: O(m*n)
+    * Space complexity: O(1)
+    */
+    int DpAlgo::min_falling_path_sum(std::vector<std::vector<int>>& grid) {
+        int m = grid.size(), n = grid[0].size();
+        for (int i = 1; i < m; i++) {
+            for (int j = 0; j < n; j++) {
+                if (j == 0) {
+                    grid[i][j] += std::min(grid[i - 1][j], grid[i - 1][j + 1]);
+                } else if (j == n - 1) {
+                    grid[i][j] += std::min(grid[i - 1][j], grid[i - 1][j - 1]);
+                } else {
+                    grid[i][j] += std::min(grid[i - 1][j], std::min(grid[i - 1][j - 1], grid[i - 1][j + 1]));
+                }
+            }
+        }
+        return *std::min_element(grid[m - 1].begin(), grid[m - 1].end());
+    }
+
+    /*
+    * Leetcode: 740
+    * Algorithm complexity: O(n)
+    * Space complexity: O(n)
+    */
+    int DpAlgo::delete_and_earn(std::vector<int>& nums) {
+        int n = nums.size();
+        if (n == 0) {
+            return 0;
+        }
+        int max_val = *std::max_element(nums.begin(), nums.end());
+        std::vector<int> sum(max_val + 1, 0);
+        for (int i = 0; i < n; i++) {
+            sum[nums[i]] += nums[i];
+        }
+        std::vector<int> dp(max_val + 1, 0);
+        dp[1] = sum[1];
+        for (int i = 2; i <= max_val; i++) {
+            dp[i] = std::max(dp[i - 1], dp[i - 2] + sum[i]);
+        }
+        return dp[max_val];
+    }
+
+    /*
+    * Leetcode: 198
+    * Algorithm complexity: O(n)
+    * Space complexity: O(1)
+    */
+    int DpAlgo::rob(std::vector<int>& nums) {
+        int n = nums.size();
+        if (n == 0) {
+            return 0;
+        }
+        if (n == 1) {
+            return nums[0];
+        }
+        int first = nums[0], second = std::max(nums[0], nums[1]);
+        for (int i = 2; i < n; i++) {
+            int temp = second;
+            second = std::max(first + nums[i], second);
+            first = temp;
+        }
+        return second;
+    }
+
+    /*
+    * Leetcode: 213
+    * Algorithm complexity: O(n)
+    * Space complexity: O(1)
+    */
+    int DpAlgo::rob_2(std::vector<int>& nums) {
+        // non recusive
+        int n = nums.size();
+        if (n == 0) {
+            return 0;
+        }
+        if (n == 1) {
+            return nums[0];
+        }
+        int first = nums[0], second = std::max(nums[0], nums[1]);
+        for (int i = 2; i < n - 1; i++) {
+            int temp = second;
+            second = std::max(first + nums[i], second);
+            first = temp;
+        }
+        int max_val = second;
+        first = 0, second = nums[1];
+        for (int i = 2; i < n; i++) {
+            int temp = second;
+            second = std::max(first + nums[i], second);
+            first = temp;
+        }
+        return std::max(max_val, second);
+    }
+
+    /*
+    * Leetcode: 337
+    * Algorithm complexity: O(n)
+    * Space complexity: O(1)
+    */
+    int DpAlgo::rob_3(TreeNode* root) {
+        std::vector<int> res = rob_helper(root);
+        return std::max(res[0], res[1]);
+    }
+
+    std::vector<int> DpAlgo::rob_helper(TreeNode* root) {
+        if (!root) {
+            return {0, 0};
+        }
+        std::vector<int> left = rob_helper(root -> left);
+        std::vector<int> right = rob_helper(root -> right);
+        int rob = root -> val + left[0] + right[0];
+        int not_rob = std::max(left[0], left[1]) + std::max(right[0], right[1]);
+        return {not_rob, rob};
+    }
+    
 }; // namespace dp_algo
