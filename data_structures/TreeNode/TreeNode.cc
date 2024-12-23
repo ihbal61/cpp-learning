@@ -53,7 +53,7 @@ int TreeNodeHelper::max_depth(TreeNode* root, bool method) {
 
 bool TreeNodeHelper::is_complete_binary_tree(TreeNode* root) {
     bool flag_ = true;
-    flag_ = is_complete_binary_tree(root);
+    flag_ = is_complete_binary_tree_helper(root);
     return flag_;
 }
 
@@ -210,7 +210,7 @@ int TreeNodeHelper::max_depth_recursive(TreeNode* root_) {
  * Algorithm complexity: O(n)
  * Space complexity: O(n)
  */
-bool TreeNodeHelper::is_complete_binary_tree(TreeNode* root_) {
+bool TreeNodeHelper::is_complete_binary_tree_helper(TreeNode* root_) {
     if (!root_) {
         return true;
     }
