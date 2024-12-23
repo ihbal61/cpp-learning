@@ -8,6 +8,15 @@
 #include "dp.h"
 
 namespace dp_algo {
+    // 构造函数定义
+    DpAlgo::DpAlgo() {
+        // 构造函数的实现逻辑
+    }
+
+    // 析构函数定义
+    DpAlgo::~DpAlgo() {
+        // 析构函数的实现逻辑
+    }
     /*
     * Leetcode: 126
     * Algorithm complexity: O(n)

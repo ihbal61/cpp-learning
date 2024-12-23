@@ -14,7 +14,7 @@ int main() {
     root -> right -> right = new TreeNode(6);
 
     std::vector<int> nums;
-    nums = tree_node_helper.inorder(root, false);
+    nums = tree_node_helper.preorder(root, false);
 
     std::cout << "Preorder vector contains value below: " << std::endl;
 

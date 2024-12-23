@@ -46,7 +46,7 @@ class TreeNodeHelper {
         int levelorder_helper(TreeNode* root_);
         int max_depth_recursive(TreeNode* root_);
         /*判断是否为完全二叉树*/
-        bool is_complete_binary_tree(TreeNode* root_);
+        bool is_complete_binary_tree_helper(TreeNode* root_);
     
         
     private:
