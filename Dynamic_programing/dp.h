@@ -15,8 +15,11 @@
 #include <unordered_map>
 #include <set>
 #include <unordered_set>
+#include "../Data_structures/TreeNode/TreeNode.h"
 
 namespace dp_algo {
+
+using namespace tree_algo;
 
 class DpAlgo {
 public:
@@ -30,7 +33,14 @@ public:
     int max_profit_with_fee(std::vector<int>& prices, int fee);
     int max_profit_with_k_transaction(std::vector<int>& prices, int k);
     int max_profit_with_2_transaction(std::vector<int>& prices);
+    int min_path_sum(std::vector<std::vector<int>>& grid);
+    int min_falling_path_sum(std::vector<std::vector<int>>& grid);
+    int delete_and_earn(std::vector<int>& nums);
+    int rob(std::vector<int>& nums);
+    int rob_2(std::vector<int>& nums);
+    int rob_3(TreeNode* root);
 private:
+    std::vector<int> rob_helper(TreeNode* root);
 
 };
 
