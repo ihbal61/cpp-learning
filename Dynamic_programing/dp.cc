@@ -54,6 +54,19 @@ namespace dp_algo {
     }
 
     /*
+    * Leetcode: 746
+    * Algorithm complexity: O(n)
+    * Space complexity: O(1)
+    */
+    int DpAlgo::min_cost_climbing_stairs(std::vector<int>& cost) {
+        int n = cost.size();
+        for (int i = 2; i < n; i++) {
+            cost[i] += std::min(cost[i - 1], cost[i - 2]);
+        }
+        return std::min(cost[n - 1], cost[n - 2]);
+    }
+
+    /*
     * Leetcode: 121
     * Algorithm complexity: O(n)
     * Space complexity: O(1)
@@ -203,6 +216,25 @@ namespace dp_algo {
     }
 
     /*
+    * Leetcode: 120
+    * Algorithm complexity: O(n^2)
+    * Space complexity: O(1)
+    */
+    int DpAlgo::min_path_sum_triangle(std::vector<std::vector<int>>& triangle) {
+        int n = triangle.size();
+        for (int i = 1; i < n; i++) {
+            triangle[i][0] += triangle[i - 1][0];
+            triangle[i][i] += triangle[i - 1][i - 1];
+        }
+        for (int i = 2; i < n; i++) {
+            for (int j = 1; j < i; j++) {
+                triangle[i][j] += std::min(triangle[i - 1][j], triangle[i - 1][j - 1]);
+            }
+        }
+        return *std::min_element(triangle[n - 1].begin(), triangle[n - 1].end());
+    }
+
+    /*
     * Leetcode: 740
     * Algorithm complexity: O(n)
     * Space complexity: O(n)
@@ -297,5 +329,137 @@ namespace dp_algo {
         int not_rob = std::max(left[0], left[1]) + std::max(right[0], right[1]);
         return {not_rob, rob};
     }
+
+    /*
+    * Leetcode: 1137
+    * Algorithm complexity: O(n)
+    * Space complexity: O(1)
+    */
+    int DpAlgo::tribonacci(int n) {
+        if (n == 0) {
+            return 0;
+        }
+        if (n == 1 || n == 2) {
+            return 1;
+        }
+        int a = 0, b = 1, c = 1, d;
+        for (int i = 3; i <= n; i++) {
+            d = a + b + c;
+            a = b;
+            b = c;
+            c = d;
+        }
+        return c;
+    }
+
+    /*
+    * Leetcode: 62
+    * Algorithm complexity: O(m*n)
+    * Space complexity: O(m*n)
+    */
+    int DpAlgo::unique_paths(int m, int n) {
+        std::vector<std::vector<int>> dp(m, std::vector<int>(n, 1));
+        for (int i = 1; i < m; i++) {
+            for (int j = 1; j < n; j++) {
+                dp[i][j] = dp[i - 1][j] + dp[i][j - 1];
+            }
+        }
+        return dp[m - 1][n - 1];
+    }
+
+    /*
+    * Leetcode: 63
+    * Algorithm complexity: O(m*n)
+    * Space complexity: O(m*n)
+    */
+    int DpAlgo::unique_paths_with_obstacles(std::vector<std::vector<int>>& obstacle_grid) {
+        int m = obstacle_grid.size(), n = obstacle_grid[0].size();
+        std::vector<std::vector<int>> dp(m, std::vector<int>(n, 0));
+        for (int i = 0; i < m && obstacle_grid[i][0] == 0; i++) {
+            dp[i][0] = 1;
+        }
+        for (int j = 0; j < n && obstacle_grid[0][j] == 0; j++) {
+            dp[0][j] = 1;
+        }
+        for (int i = 1; i < m; i++) {
+            for (int j = 1; j < n; j++) {
+                if (obstacle_grid[i][j] == 0) {
+                    dp[i][j] = dp[i - 1][j] + dp[i][j - 1];
+                }
+            }
+        }
+        return dp[m - 1][n - 1];
+    }
+
+    /*
+    * Leetcode: 221
+    * Algorithm complexity: O(m*n)
+    * Space complexity: O(m*n)
+    */
+    int DpAlgo::maximal_square(std::vector<std::vector<char>>& matrix) {
+        int m = matrix.size(), n = matrix[0].size();
+        std::vector<std::vector<int>> dp(m, std::vector<int>(n, 0));
+        int max_side = 0;
+        for (int i = 0; i < m; i++) {
+            dp[i][0] = matrix[i][0] - '0';
+            max_side = std::max(max_side, dp[i][0]);
+        }
+        for (int j = 0; j < n; j++) {
+            dp[0][j] = matrix[0][j] - '0';
+            max_side = std::max(max_side, dp[0][j]);
+        }
+        for (int i = 1; i < m; i++) {
+            for (int j = 1; j < n; j++) {
+                if (matrix[i][j] == '1') {
+                    dp[i][j] = std::min(dp[i - 1][j - 1], std::min(dp[i - 1][j], dp[i][j - 1])) + 1;
+                    max_side = std::max(max_side, dp[i][j]);
+                }
+            }
+        }
+        return max_side * max_side;
+    }
+
+    /*
+    * Leetcode: 409
+    * Algorithm complexity: O(n^2)
+    * Space complexity: O(n^2)
+    */
+    std::string DpAlgo::longest_palindrome(std::string s) {
+        int n = s.size();
+        if (n == 0) return "";
+
+        // dp[i][j] 表示 s[i..j] 是否是回文
+        std::vector<std::vector<bool>> dp(n, std::vector<bool>(n, false));
+        int start = 0, max_length = 1;
+
+        // 所有长度为1的子串都是回文
+        for (int i = 0; i < n; ++i) {
+            dp[i][i] = true;
+        }
+
+        // 检查长度为2的子串
+        for (int i = 0; i < n - 1; ++i) {
+            if (s[i] == s[i + 1]) {
+                dp[i][i + 1] = true;
+                start = i;
+                max_length = 2;
+            }
+        }
+
+        // 检查长度大于2的子串
+        for (int length = 3; length <= n; ++length) {
+            for (int i = 0; i < n - length + 1; ++i) {
+                int j = i + length - 1;
+                if (s[i] == s[j] && dp[i + 1][j - 1]) {
+                    dp[i][j] = true;
+                    start = i;
+                    max_length = length;
+                }
+            }
+        }
+
+        return s.substr(start, max_length);
+    }
+    
     
 }; // namespace dp_algo
