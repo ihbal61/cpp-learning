@@ -1,7 +1,11 @@
 .vscode
 .vscode/*
-Tree/*.o
-Tree/*.a
+Data_strutrues/Tree/*.o
+Data_strutrues/Tree/*.a
 .git
-ListNode/*.o
-ListNode/*.a
+Data_strutrues/ListNode/*.o
+Data_strutrues/ListNode/*.a
+Dynamic_Programming/*.o
+Dynamic_Programming/*.a
+Sorting_Algorithms/*.o
+Sorting_Algorithms/*.a
