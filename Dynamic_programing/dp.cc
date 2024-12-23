@@ -397,6 +397,9 @@ namespace dp_algo {
     * Space complexity: O(m*n)
     */
     int DpAlgo::maximal_square(std::vector<std::vector<char>>& matrix) {
+        if (matrix.size() == 0) {
+            return 0;
+        }
         int m = matrix.size(), n = matrix[0].size();
         std::vector<std::vector<int>> dp(m, std::vector<int>(n, 0));
         int max_side = 0;
