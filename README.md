@@ -1,4 +1,4 @@
-# c++-learning
+# c++ learning notes
 
 ### Algorithms
 - Sorting Algorithms
