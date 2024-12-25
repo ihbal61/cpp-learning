@@ -3,25 +3,25 @@
  * Copyright (c) 2024 yikebaer·aizezi
  * @date: 2024-12-24 15:50
  * @author: yikebaer·aizezi
- * @file: hash.h
- * @brief: header for hashmap related algorithm
+ * @file: graph.h
+ * @brief: header for graph related algorithm
 */
 #pragma once
 
-#ifndef HASH_H
-#define HASH_H
-#endif // HASH_H
+#ifndef GRAPH_H
+#define GRAPH_H
+#endif // GRAPH_H
 
 #include <vector>
 #include <map>
 #include <unordered_map>
 
-namespace hash_algo {
+namespace graph_algo {
 
-class HashAlgo {
+class GraphAlgo {
     public:
 
     private:
 };
 
-} // namespace hash_algo
+} // namespace graph_algo
