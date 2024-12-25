@@ -5,6 +5,8 @@
  * @file: dp.h
  * @brief: dp algorithm
 */
+#pragma once
+
 #ifndef DP_H
 #define DP_H
 #endif // DP_H
