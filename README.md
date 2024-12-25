@@ -1,4 +1,4 @@
-# c++-learning
+# c++ learning notes
 
 ### Algorithms
 - Sorting Algorithms
@@ -17,3 +17,6 @@
 #### backend dev knowledge
 
 #### Notes
+
+#### 
+
