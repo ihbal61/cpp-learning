@@ -6,6 +6,7 @@
  * @file: hash.h
  * @brief: header for hashmap related algorithm
 */
+#pragma once
 
 #ifndef HASH_H
 #define HASH_H
