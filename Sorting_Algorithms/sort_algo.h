@@ -5,6 +5,8 @@
  * @file: sort_algo.h
  * @brief: header for sorting algorithm
 */
+#pragma once
+
 #include <vector>
 #include <algorithm>
 #include <map>
