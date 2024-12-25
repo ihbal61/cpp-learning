@@ -24,7 +24,7 @@ struct ListNode {
 };
 
 class ListNodeHelper {
-    public:
+public:
     // api for main.cc
     ListNode* reverse_list_node(ListNode* head);
     ListNode* merge_sorted_list_node(ListNode* head1, ListNode* head2);
@@ -36,7 +36,7 @@ class ListNodeHelper {
     bool is_palindrome(ListNode* head);
     ListNode* get_intersection_node(ListNode* head1, ListNode* head2);
 
-    private:
+private:
     ListNode* reverse_list_node_helper(ListNode* head_);
     ListNode* merge_sorted_list_node_helper(ListNode* head1_, ListNode* head2_);
     ListNode* merge_sort(ListNode* head_);
