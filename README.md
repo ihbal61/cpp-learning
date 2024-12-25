@@ -1,19 +1,19 @@
 # c++-learning
 
-### 算法
-- 排序算法
-- 动态规划
-- 递归
-- 分治
+### Algorithms
+- Sorting Algorithms
+- Dynamic Programing
+- Recursive Algorithm
+- Divide and conquer strategy
 
-#### 语言特性
+#### Language Features
 
-#### 数据结构
-- 树
-- 链表
-- 数组
-- 图
+#### Data Structures
+- Tree
+- ListNode
+- Array
+- Graph
 
-#### 八股
+#### backend dev knowledge
 
-#### 笔记
+#### Notes
