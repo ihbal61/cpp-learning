@@ -18,4 +18,3 @@
 
 #### Notes
 
-co-authored by mwz
