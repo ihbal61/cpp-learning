@@ -88,6 +88,7 @@ void TreeNodeHelper::preorder_non_recursive(TreeNode* root_) {
 /*
  * Algorithm complexity: O(n)
  * Space complexity: O(n)
+ * leetcode 94
  */
 void TreeNodeHelper::inorder_recursive(TreeNode* root_) {
     /*递归中序遍历*/
@@ -102,6 +103,7 @@ void TreeNodeHelper::inorder_recursive(TreeNode* root_) {
 /*
  * Algorithm complexity: O(n)
  * Space complexity: O(n)
+ * leetcode 94
  */
 void TreeNodeHelper::inorder_non_recursive(TreeNode* root_) {
     /*非递归中序遍历*/
@@ -125,6 +127,7 @@ void TreeNodeHelper::inorder_non_recursive(TreeNode* root_) {
 /*
  * Algorithm complexity: O(n)
  * Space complexity: O(n)
+ * leetcode 145
  */
 void TreeNodeHelper::postorder_recursive(TreeNode* root_) {
     /*递归后序遍历*/
@@ -139,6 +142,7 @@ void TreeNodeHelper::postorder_recursive(TreeNode* root_) {
 /*
  * Algorithm complexity: O(n)
  * Space complexity: O(n)
+ * leetcode 145
  */
 void TreeNodeHelper::postorder_non_recursive(TreeNode* root_) {
     /*非递归后序遍历*/
@@ -168,6 +172,7 @@ void TreeNodeHelper::postorder_non_recursive(TreeNode* root_) {
 /*
  * Algorithm complexity: O(n)
  * Space complexity: O(n)
+ * leetcode 102
  */
 int TreeNodeHelper::levelorder_helper(TreeNode* root_) {
     if (!root_) {
@@ -197,6 +202,7 @@ int TreeNodeHelper::levelorder_helper(TreeNode* root_) {
 /*
  * Algorithm complexity: O(n)
  * Space complexity: O(n)
+ * leetcode 104
  */
 int TreeNodeHelper::max_depth_recursive(TreeNode* root_) {
     if (!root_) {
@@ -209,6 +215,7 @@ int TreeNodeHelper::max_depth_recursive(TreeNode* root_) {
 /*
  * Algorithm complexity: O(n)
  * Space complexity: O(n)
+ * leetcode 958
  */
 bool TreeNodeHelper::is_complete_binary_tree_helper(TreeNode* root_) {
     if (!root_) {
@@ -235,6 +242,7 @@ bool TreeNodeHelper::is_complete_binary_tree_helper(TreeNode* root_) {
 /*
  * Algorithm complexity: O(n)
  * Space complexity: O(n)
+ * leetcode 230
  */
 int TreeNodeHelper::kth_node(TreeNode* root, int k) {
     if (!root) {
@@ -255,6 +263,49 @@ int TreeNodeHelper::kth_node(TreeNode* root, int k) {
         node = node -> right;
     }
     return -1;
+}
+
+/*
+ * Algorithm complexity: O(n)
+ * Space complexity: O(n)
+ * leetcode 226
+ */
+TreeNode* TreeNodeHelper::mirror_recursive(TreeNode* root) {
+    if (!root) {
+        return nullptr;
+    }
+    TreeNode* left = mirror_recursive(root -> left);
+    TreeNode* right = mirror_recursive(root -> right);
+    root -> left = right;
+    root -> right = left;
+    return root;
+}
+
+/*
+ * Algorithm complexity: O(n)
+ * Space complexity: O(n)
+ * leetcode 226
+ */
+TreeNode* TreeNodeHelper::mirror_non_recursive(TreeNode* root) {
+    if (!root) {
+        return nullptr;
+    }
+    std::stack<TreeNode*> stk;
+    stk.push(root);
+    while (!stk.empty()) {
+        TreeNode* node = stk.top();
+        stk.pop();
+        if (node -> left) {
+            stk.push(node -> left);
+        }
+        if (node -> right) {
+            stk.push(node -> right);
+        }
+        TreeNode* tmp = node -> left;
+        node -> left = node -> right;
+        node -> right = tmp;
+    }
+    return root;
 }
 
 };// namespace tree_algo

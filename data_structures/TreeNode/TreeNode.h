@@ -30,6 +30,11 @@ class TreeNodeHelper {
         std::vector<int> levelorder(TreeNode* root);
         int max_depth(TreeNode* root, bool method);
         bool is_complete_binary_tree(TreeNode* root);
+        /*二叉搜索树的第K个节点*/
+        int kth_node(TreeNode* root, int k);
+        /*二叉树的镜像*/
+        TreeNode* mirror_recursive(TreeNode* root);
+        TreeNode* mirror_non_recursive(TreeNode* root);
 
         
     private:
@@ -47,7 +52,6 @@ class TreeNodeHelper {
         int max_depth_recursive(TreeNode* root_);
         /*判断是否为完全二叉树*/
         bool is_complete_binary_tree_helper(TreeNode* root_);
-    
         
     private:
         std::vector<int> order_vec_;
