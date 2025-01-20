@@ -1,5 +1,21 @@
 # 二叉树相关知识点
 
+## 二叉树定义
+
+    说明：
+        -二叉树是一种特殊的树，每个节点最多有两个子节点，分别为左子节点和右子节点
+
+    定义代码：
+
+```C++
+struct TreeNode {
+    int val;
+    TreeNode *left;
+    TreeNode *right;
+    TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+};
+```
+
 ## 二叉搜索树
 
     特点：
