@@ -232,4 +232,29 @@ bool TreeNodeHelper::is_complete_binary_tree_helper(TreeNode* root_) {
     return flag_;
 }
 
+/*
+ * Algorithm complexity: O(n)
+ * Space complexity: O(n)
+ */
+int TreeNodeHelper::kth_node(TreeNode* root, int k) {
+    if (!root) {
+        return -1;
+    }
+    std::stack<TreeNode*> stk;
+    TreeNode* node = root;
+    while (node || !stk.empty()) {
+        while (node) {
+            stk.push(node);
+            node = node -> left;
+        }
+        node = stk.top();
+        stk.pop();
+        if (--k == 0) {
+            return node -> val;
+        }
+        node = node -> right;
+    }
+    return -1;
+}
+
 };// namespace tree_algo
