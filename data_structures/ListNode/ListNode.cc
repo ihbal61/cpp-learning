@@ -280,5 +280,18 @@ ListNode* ListNodeHelper::get_tail(ListNode* head_) {
     return head_;
 }
 
+ListNode* ListNodeHelper::delete_node(ListNode* head, int val) {
+    ListNode* dummy = new ListNode(0, head);
+    ListNode* prev = dummy, *curr = head;
+    while (curr) {
+        if (curr -> val == val) {
+            prev -> next = curr -> next;
+            break;
+        }
+        prev = prev -> next;
+        curr = curr -> next;
+    }
+    return dummy -> next;
+}
 
 }; // namespace list_node_algo

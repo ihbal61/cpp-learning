@@ -35,6 +35,7 @@ public:
     bool is_palindrome_stack(ListNode* head);
     bool is_palindrome(ListNode* head);
     ListNode* get_intersection_node(ListNode* head1, ListNode* head2);
+    ListNode* delete_node(ListNode* head, int val);
 
 private:
     ListNode* reverse_list_node_helper(ListNode* head_);
