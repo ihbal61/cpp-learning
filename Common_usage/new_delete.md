@@ -91,7 +91,7 @@ MyClass destructor
 
 `malloc`和`free`是 C 标准库中用于动态内存分配和释放的函数。它们仅涉及内存的分配和释放，不涉及对象的构造和析构，因此在C++中使用时，需要手动管理对象的构造和析构。
 
-#### malloc
+#### `malloc` 操作符
 **功能**：malloc用于在堆上分配指定大小的内存，并返回指向该内存块的指针。返回的指针没有初始化。
 **底层实现**：malloc通常会调用操作系统提供的内存分配机制，如brk或mmap（在Linux中），或者VirtualAlloc（在Windows中）。
 
@@ -104,7 +104,7 @@ int* p = (int*)malloc(sizeof(int));  // 分配内存
 printf("%d\n", *p);  // 输出：10
 ```
 
-#### free
+#### `free` 操作符
 **功能**：free用于释放通过malloc分配的内存。
 
 **底层实现**：free会将内存标记为可用，并将该内存块加入到空闲列表中（通常通过空闲链表或内存池机制）。在Linux中，free通常会调用操作系统提供的内存释放机制（如munmap或brk）。
