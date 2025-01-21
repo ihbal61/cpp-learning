@@ -308,4 +308,33 @@ TreeNode* TreeNodeHelper::mirror_non_recursive(TreeNode* root) {
     return root;
 }
 
+/*
+ * Algorithm complexity: O(n)
+ * Space complexity: O(n)
+ * leetcode 113
+ */
+std::vector<std::vector<int>> TreeNodeHelper::path_sum_list(TreeNode* root, int target) {
+    if (!root) {
+        return res_vec_;
+    }
+    std::vector<int> path;
+    dfs(root, target, path);
+    return res_vec_;
+}
+
+
+void TreeNodeHelper::dfs(TreeNode* node, int target, std::vector<int>& path) {
+    if (!node) {
+        return;
+    }
+    path.push_back(node -> val);
+    target -= node -> val;
+    if (!node -> left && !node -> right && target == 0) {
+        res_vec_.push_back(path);
+    }
+    dfs(node -> left, target, path);
+    dfs(node -> right, target, path);
+    path.pop_back();
+}
+
 };// namespace tree_algo

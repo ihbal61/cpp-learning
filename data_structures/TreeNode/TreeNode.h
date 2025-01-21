@@ -35,6 +35,10 @@ class TreeNodeHelper {
         /*二叉树的镜像*/
         TreeNode* mirror_recursive(TreeNode* root);
         TreeNode* mirror_non_recursive(TreeNode* root);
+        /*二叉树中和为某个值的路径*/
+        int path_sum(TreeNode* root, int sum);
+        /*二叉树中和为某个值的路径的路径集合*/
+        std::vector<std::vector<int>> path_sum_list(TreeNode* root, int target);
 
         
     private:
@@ -52,9 +56,12 @@ class TreeNodeHelper {
         int max_depth_recursive(TreeNode* root_);
         /*判断是否为完全二叉树*/
         bool is_complete_binary_tree_helper(TreeNode* root_);
+
+        void dfs(TreeNode* root, int target, std::vector<int>& path);
         
     private:
         std::vector<int> order_vec_;
+        std::vector<std::vector<int>> res_vec_;
         std::stack<TreeNode*> stk_;
         TreeNode* node_ = nullptr;
         TreeNode* prev_ = nullptr;
