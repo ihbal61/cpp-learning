@@ -337,4 +337,25 @@ void TreeNodeHelper::dfs(TreeNode* node, int target, std::vector<int>& path) {
     path.pop_back();
 }
 
+/*
+ * Algorithm complexity: O(n)
+ * Space complexity: O(n)
+ * leetcode 110
+ */
+bool TreeNodeHelper::is_balanced(TreeNode* root) {
+    return height(root) >= 0;
+}
+
+int TreeNodeHelper::height(TreeNode* root) {
+    if (!root) {
+        return 0;
+    }
+    int left_height = height(root->left);
+    int right_height = height(root->right);
+    if (left_height == -1 || right_height == -1 || std::abs(right_height - left_height) > 1) {
+        return -1;
+    }
+    return std::max(left_height, right_height) + 1;
+}
+
 };// namespace tree_algo

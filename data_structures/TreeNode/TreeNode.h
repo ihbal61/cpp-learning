@@ -39,6 +39,7 @@ class TreeNodeHelper {
         int path_sum(TreeNode* root, int sum);
         /*二叉树中和为某个值的路径的路径集合*/
         std::vector<std::vector<int>> path_sum_list(TreeNode* root, int target);
+        bool is_balanced(TreeNode* root);
 
         
     private:
@@ -58,6 +59,8 @@ class TreeNodeHelper {
         bool is_complete_binary_tree_helper(TreeNode* root_);
 
         void dfs(TreeNode* root, int target, std::vector<int>& path);
+
+        int height(TreeNode* root);
         
     private:
         std::vector<int> order_vec_;
