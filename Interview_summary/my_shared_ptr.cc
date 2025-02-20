@@ -73,8 +73,6 @@ public:
     }
 
 private:
-    T* ptr_;
-    std::atomic<size_t>* ref_count_;
 
     void release() {
         if (ptr_) {
@@ -87,6 +85,8 @@ private:
             ref_count_ = nullptr;
         }
     }
+    T* ptr_;
+    std::atomic<size_t>* ref_count_;
 };
 
 template <typename T, typename... Args>
