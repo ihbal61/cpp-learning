@@ -22,3 +22,4 @@ Algorithms/Dynamic_Programming/main
 Interview_summary/*.o
 Interview_summary/*.a
 Interview_summary/main
+Interview_summary/test.cc
