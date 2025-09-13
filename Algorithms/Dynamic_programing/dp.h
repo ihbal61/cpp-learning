@@ -47,7 +47,7 @@ public:
     int unique_paths(int m, int n);
     int unique_paths_with_obstacles(std::vector<std::vector<int>>& obstacle_grid);
     int maximal_square(std::vector<std::vector<char>>& matrix);
-    int min_distance(std::string& word1, std::string& word2);
+    int min_distance(const std::string& word1, const std::string& word2);
     std::string longest_palindrome(std::string s);
 private:
     std::vector<int> rob_helper(TreeNode* root);
