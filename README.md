@@ -17,6 +17,5 @@
 #### backend dev knowledge
 
 #### Notes
-
-#### 
+Recently I've been real busy, I'll update when I'm available
 
